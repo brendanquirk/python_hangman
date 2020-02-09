@@ -21,23 +21,31 @@ print(f"The word has {len(word)} letters!")
 time.sleep(1)
 
 ### Grab guess from user ###
-guess = input("Guess a letter!\n")
-time.sleep(.5)
+# def user_guess():
+#     guess = input("Guess a letter!\n")
+#     time.sleep(.5)
+#
+#     guesses.append(guess)
+#
+#     print(f"You have guessed {guesses}")
 
-guesses.append(guess)
 
-print(guesses)
+### while loops that runs when user still has turns ###
+while turns > 0:
+    # user_guess()
+    guess = input("Guess a letter!\n")
+    time.sleep(.5)
 
-guess = input("Guess a letter!\n")
-time.sleep(.5)
-
-guesses.append(guess)
-
-print(guesses)
+    if guess in guesses:
+        print(f"you have already guessed {guess}, try again")
+    else:
+        guesses.append(guess)
+        print(f"You guessed {guess}. All guesses so far {guesses}")
 
 
 
 ### if guess isnt in guesses add to guesses ###
+
 
 ### if it is have them guess again ###
 
@@ -63,3 +71,16 @@ print(guesses)
 #     word = random.choice(words_array)
 #
 # get_word()
+
+
+# while turns > 0:
+#     # user_guess()
+#     for item in guesses:
+#         if item in guesses:
+#             print(f"this is the item {item}")
+#
+#             print(f"You have already guessed {item}, guess again")
+#             user_guess()
+#         else:
+#             print(f"this is the item {item}")
+#             # guesses.append(item)
