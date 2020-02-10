@@ -26,14 +26,13 @@ time.sleep(1)
 
 
 ### while loops that runs when user still has turns ###
-while turns > 0:
+while len(word) > len(str.join('', correct_word)) and turns > 0:
     # user_guess()
-    guess = input("Guess a letter!\n")
-    time.sleep(.5)
-
     if len(word) == len(str.join('', correct_word)):
         print(f"You win! The word was {word}")
     else:
+            guess = input("Guess a letter!\n")
+            time.sleep(.5)
             if guess in wrong_guesses or guess in correct_word:
                 print(f"you have already guessed {guess}, try again")
             elif guess in word:
