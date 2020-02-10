@@ -2,11 +2,14 @@ import time
 import random
 
 #word array to select from
-words_array = ['time', 'money', 'code', 'dragon', 'winning', 'avocado', 'waverider']
+words_array = ['time']
+# , 'money', 'code', 'dragon', 'winning', 'avocado', 'waverider'
 #hard coded word
 word = random.choice(words_array)
 #store user guesses (initially empty)
-guesses = []
+wrong_guesses = []
+#store correct letters in array
+correct_word = []
 #user gets 10 turns
 turns = 10
 
@@ -20,14 +23,6 @@ time.sleep(1)
 print(f"The word has {len(word)} letters!")
 time.sleep(1)
 
-### Grab guess from user ###
-# def user_guess():
-#     guess = input("Guess a letter!\n")
-#     time.sleep(.5)
-#
-#     guesses.append(guess)
-#
-#     print(f"You have guessed {guesses}")
 
 
 ### while loops that runs when user still has turns ###
@@ -36,34 +31,27 @@ while turns > 0:
     guess = input("Guess a letter!\n")
     time.sleep(.5)
 
-    if guess in guesses:
-        print(f"you have already guessed {guess}, try again")
+    if len(word) == len(str.join('', correct_word)):
+        print(f"You win! The word was {word}")
     else:
-        guesses.append(guess)
-        print(f"You guessed {guess}. All guesses so far {guesses}")
+            if guess in wrong_guesses or guess in correct_word:
+                print(f"you have already guessed {guess}, try again")
+            elif guess in word:
+                print(f"{guess} is in the word!")
+                # wrong_guesses.append(guess)
+                correct_word.append(guess)
+                print(f"You guessed {guess}. All wrong guesses so far {wrong_guesses}")
+                print(f"All correct guesses so far: {correct_word}")
+                print(f"Correct word:{len(str.join('', correct_word))}")
+                print(f"Word: {len(word)}")
+            else:
+                turns -= 1
+                print(f"{guess} is not in the word! Try again! You have {turns} wrong guesses left!")
+                wrong_guesses.append(guess)
+                print(f"All wrong guesses so far: {wrong_guesses}")
+                print(f"All correct guesses so far: {correct_word}")
 
 
-
-### if guess isnt in guesses add to guesses ###
-
-
-### if it is have them guess again ###
-
-### If guess isnt in word increment a failed variable ###
-
-
-# while turns > 0:
-#     print(word)
-#     turns -= 1
-#     failed = 0
-#
-#     for char in word:
-#         if char in guesses:
-#             print(char),
-#         else:
-#             print("_")
-#             failed += 1
-#
 
 #################### GRAVEYARD ####################
 
