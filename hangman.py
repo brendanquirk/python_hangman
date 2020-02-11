@@ -26,29 +26,31 @@ time.sleep(1)
 
 
 ### while loops that runs when user still has turns ###
+# if len(word) is len(str.join('', correct_word)):
+#     print(f"You win! The word was {word}")
+# else:
 while len(word) > len(str.join('', correct_word)) and turns > 0:
-    # user_guess()
-    if len(word) == len(str.join('', correct_word)):
-        print(f"You win! The word was {word}")
+    guess = input("Guess a letter!\n")
+    time.sleep(.5)
+    if guess in wrong_guesses or guess in correct_word:
+        print(f"you have already guessed {guess}, try again")
+    elif guess in word:
+        print(f"{guess} is in the word!")
+        # wrong_guesses.append(guess)
+        correct_word.append(guess)
+        print(f"All wrong guesses so far {wrong_guesses}")
+        print(f"All correct guesses so far: {correct_word}")
+        # print(f"Correct word:{len(str.join('', correct_word))}")
+        print(f"Word Length: {len(word)}")
+    elif guess not in word:
+        turns -= 1
+        print(f"{guess} is not in the word! Try again! You have {turns} wrong guesses left!")
+        wrong_guesses.append(guess)
+        print(f"All wrong guesses so far: {wrong_guesses}")
+        print(f"All correct guesses so far: {correct_word}")
     else:
-            guess = input("Guess a letter!\n")
-            time.sleep(.5)
-            if guess in wrong_guesses or guess in correct_word:
-                print(f"you have already guessed {guess}, try again")
-            elif guess in word:
-                print(f"{guess} is in the word!")
-                # wrong_guesses.append(guess)
-                correct_word.append(guess)
-                print(f"You guessed {guess}. All wrong guesses so far {wrong_guesses}")
-                print(f"All correct guesses so far: {correct_word}")
-                print(f"Correct word:{len(str.join('', correct_word))}")
-                print(f"Word: {len(word)}")
-            else:
-                turns -= 1
-                print(f"{guess} is not in the word! Try again! You have {turns} wrong guesses left!")
-                wrong_guesses.append(guess)
-                print(f"All wrong guesses so far: {wrong_guesses}")
-                print(f"All correct guesses so far: {correct_word}")
+        print(f"You win! The word was {word}!")
+
 
 
 
